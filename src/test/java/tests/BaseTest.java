@@ -1,10 +1,6 @@
 package tests;
 
-import io.qameta.allure.Attachment;
 import io.qameta.allure.Feature;
-import io.qameta.allure.Step;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -23,28 +19,27 @@ public class BaseTest extends DriverFactory {
         wd.manage().window().maximize();
     }
 
-    @Feature("Docker")
+    @Feature("CucumberWebpage")
     @Test()
-    public void dockerSeleniumHub() throws IOException {
-        new BasePage(wd).openWebPage("https://cucumber.io/docs/guides/10-minute-tutorial/");
-        saveScreenshot();
+    public void testCucumber() throws IOException {
+        new BasePage(wd).openWebPage("https://cucumber.io/docs/guides/10-minute-tutorial/")
+        .openWebPage("https://stackoverflow.com/");
     }
 
-    @Feature("Docker")
+    @Feature("StackOverflow")
     @Test()
-    public void dockerVolodya() throws IOException {
-        new BasePage(wd).openWebPage("https://cucumber.io");
-        saveScreenshot();
+    public void testStackOverflow() throws IOException {
+        new BasePage(wd).openWebPage("https://stackoverflow.com/");
+    }
+
+    @Feature("Wikipedia")
+    @Test()
+    public void testWikipedia() throws IOException {
+        new BasePage(wd).openWebPage("https://www.wikipedia.org/");
     }
 
     @AfterTest
     public void quit() {
         wd.quit();
-    }
-
-    @Step("Save attachment")
-    @Attachment(value = "Page screenshot", type = "image/png")
-    public byte[] saveScreenshot() {
-        return ((TakesScreenshot) wd).getScreenshotAs(OutputType.BYTES);
     }
 }
