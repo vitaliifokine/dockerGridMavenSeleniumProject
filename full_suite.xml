@@ -3,7 +3,7 @@
 <suite name="example suite 1" parallel="methods" thread-count="2">
     <test name="Regression suite 1" >
         <classes>
-            <class name="BaseTest"/>
+            <class name="tests.BaseTest"/>
         </classes>
     </test>
 </suite>

@@ -1,3 +1,5 @@
+package tests;
+
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
@@ -6,16 +8,18 @@ import org.openqa.selenium.TakesScreenshot;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import pages.BasePage;
+import utils.DriverFactory;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 
-public class BaseTest extends utils.DriverFactory {
+public class BaseTest extends DriverFactory {
 
     @BeforeTest
     public void setUp() throws MalformedURLException {
         // Driver Factory Setup
-        wd = utils.DriverFactory.setBrowser("remote");
+        wd = DriverFactory.setBrowser("remote");
         wd.manage().window().maximize();
     }
 
