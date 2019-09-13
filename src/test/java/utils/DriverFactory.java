@@ -42,7 +42,7 @@ public class DriverFactory {
             chromeOptions.addArguments("--disable-extensions");
             chromeOptions.addArguments("--no-sandbox");
             chromeOptions.merge(cap);
-            WebDriver driver = new RemoteWebDriver(new URL("http://192.168.221.33:4444/wd/hub"), chromeOptions);
+            WebDriver driver = new RemoteWebDriver(new URL("http://192.168.81.65:4444/wd/hub"), chromeOptions);
             return driver;
         }
         return null;
