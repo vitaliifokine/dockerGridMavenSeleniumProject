@@ -1,9 +1,7 @@
 package utils;
 
-import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -12,7 +10,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 import java.net.MalformedURLException;
-import java.net.URL;
+import java.net.URI;
 
 public class DriverFactory {
     public static WebDriver wd;
@@ -33,16 +31,32 @@ public class DriverFactory {
             return new InternetExplorerDriver();
         }
         else if ("remote".equalsIgnoreCase(browser)) {
-            DesiredCapabilities cap = new DesiredCapabilities();
-            cap.setBrowserName("chrome");
-            cap.setVersion("");
-            cap.setPlatform(Platform.LINUX);
-            ChromeOptions chromeOptions = new ChromeOptions();
-            chromeOptions.addArguments("test-type");
-            chromeOptions.addArguments("--disable-extensions");
-            chromeOptions.addArguments("--no-sandbox");
-            chromeOptions.merge(cap);
-            WebDriver driver = new RemoteWebDriver(new URL("http://192.168.81.65:4444/wd/hub"), chromeOptions);
+            // For Selenium Grid
+//            DesiredCapabilities cap = new DesiredCapabilities();
+//            cap.setBrowserName("chrome");
+//            cap.setVersion("");
+//            cap.setPlatform(Platform.LINUX);
+//            ChromeOptions chromeOptions = new ChromeOptions();
+//            chromeOptions.addArguments("test-type");
+//            chromeOptions.addArguments("--disable-extensions");
+//            chromeOptions.addArguments("--no-sandbox");
+//            chromeOptions.merge(cap);
+//            WebDriver driver = new RemoteWebDriver(new URL("http://172.17.35.122:30329/wd/hub"), chromeOptions);
+
+
+            //
+            // For Selenoid
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setBrowserName("opera");
+            capabilities.setVersion("63.0");
+            capabilities.setCapability("enableVNC", true);
+            capabilities.setCapability("enableVideo", false);
+
+            RemoteWebDriver driver = new RemoteWebDriver(
+                    URI.create("http://localhost:4444/wd/hub").toURL(),
+                    capabilities
+            );
+
             return driver;
         }
         return null;
