@@ -30,7 +30,6 @@ public class BaseTest extends DriverFactory {
     @Test()
     public void testStackOverflow() throws IOException, InterruptedException {
         new BasePage(wd).openWebPage("https://stackoverflow.com/");
-        Thread.sleep(20000);
     }
 
     @Feature("Wikipedia")
