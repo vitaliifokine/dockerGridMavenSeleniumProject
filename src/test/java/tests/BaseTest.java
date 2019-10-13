@@ -16,7 +16,7 @@ public class BaseTest extends DriverFactory {
     public void setUp() throws MalformedURLException {
         // Driver Factory Setup
         wd = DriverFactory.setBrowser("remote");
-       // wd.manage().window().maximize();
+        wd.manage().window().maximize();
     }
 
     @Feature("CucumberWebpage")
