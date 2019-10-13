@@ -15,7 +15,7 @@ import java.net.URI;
 public class DriverFactory {
     public static WebDriver wd;
 
-    public static WebDriver setBrowser(String browser) throws MalformedURLException, InterruptedException {
+    public static WebDriver setBrowser(String browser) throws MalformedURLException {
         if ("chrome".equalsIgnoreCase(browser)) {
             System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
             return new ChromeDriver();
@@ -45,7 +45,6 @@ public class DriverFactory {
 
             //
             // For Selenoid
-            Thread.sleep(5000);
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setBrowserName("chrome");
             capabilities.setVersion("77.0");
