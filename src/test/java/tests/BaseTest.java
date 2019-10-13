@@ -38,6 +38,18 @@ public class BaseTest extends DriverFactory {
         new BasePage(wd).openWebPage("https://www.wikipedia.org/");
     }
 
+    @Feature("Ukrnet")
+    @Test()
+    public void testUkrnet() throws IOException {
+        new BasePage(wd).openWebPage("https://www.ukr.net/");
+    }
+
+    @Feature("Youtube")
+    @Test()
+    public void testYoutube() throws IOException {
+        new BasePage(wd).openWebPage("https://www.youtube.com/");
+    }
+
     @AfterTest
     public void quit() {
         wd.quit();
