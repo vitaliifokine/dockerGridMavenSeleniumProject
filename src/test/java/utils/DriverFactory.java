@@ -46,10 +46,10 @@ public class DriverFactory {
             //
             // For Selenoid
             DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setBrowserName("opera");
+            capabilities.setBrowserName("chrome");
             capabilities.setVersion("63.0");
             capabilities.setCapability("enableVNC", true);
-            capabilities.setCapability("enableVideo", false);
+            capabilities.setCapability("enableVideo", true);
 
             RemoteWebDriver driver = new RemoteWebDriver(
                     URI.create("http://localhost:8081/wd/hub").toURL(),
