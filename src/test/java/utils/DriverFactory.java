@@ -47,7 +47,7 @@ public class DriverFactory {
             // For Selenoid
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setBrowserName("chrome");
-            capabilities.setVersion("77.0");
+            capabilities.setVersion("76.0");
             capabilities.setCapability("enableVNC", true);
             capabilities.setCapability("enableVideo", false);
             RemoteWebDriver driver = new RemoteWebDriver(
