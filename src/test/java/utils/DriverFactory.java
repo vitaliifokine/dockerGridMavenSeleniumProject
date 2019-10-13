@@ -51,7 +51,7 @@ public class DriverFactory {
             capabilities.setCapability("enableVNC", true);
             capabilities.setCapability("enableVideo", false);
             RemoteWebDriver driver = new RemoteWebDriver(
-                    URI.create("http://localhost:4444/wd/hub").toURL(),
+                    URI.create("http://localhost:8081/wd/hub").toURL(),
                     capabilities
             );
 
