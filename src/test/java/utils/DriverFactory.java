@@ -1,5 +1,6 @@
 package utils;
 
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -49,6 +50,7 @@ public class DriverFactory {
             capabilities.setBrowserName("chrome");
             capabilities.setVersion("77.0");
             capabilities.setCapability("enableVNC", true);
+            capabilities.setPlatform(Platform.LINUX);
             capabilities.setCapability("enableVideo", false);
             RemoteWebDriver driver = new RemoteWebDriver(
                     URI.create("http://localhost:8081/wd/hub").toURL(),
