@@ -16,18 +16,18 @@ public class DriverFactory {
     public static WebDriver wd;
 
     public static WebDriver setBrowser(String browser) throws MalformedURLException {
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        System.setProperty("webdriver.ie.driver", System.getProperty("user.dir") + "\\drivers\\IEDriverServer.exe");
-        System.setProperty("webdriver.edge.driver", System.getProperty("user.dir") + "\\drivers\\MicrosoftWebDriver.exe");
         if ("chrome".equalsIgnoreCase(browser)) {
+            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
             return new ChromeDriver();
         } else if ("firefox".equalsIgnoreCase(browser)) {
             return new FirefoxDriver();
         } else if ("safari".equalsIgnoreCase(browser)) {
             return new SafariDriver();
         } else if ("edge".equalsIgnoreCase(browser)) {
+            System.setProperty("webdriver.edge.driver", System.getProperty("user.dir") + "\\drivers\\MicrosoftWebDriver.exe");
             return new EdgeDriver();
         } else if ("ie".equalsIgnoreCase(browser)) {
+            System.setProperty("webdriver.ie.driver", System.getProperty("user.dir") + "\\drivers\\IEDriverServer.exe");
             return new InternetExplorerDriver();
         }
         else if ("remote".equalsIgnoreCase(browser)) {
@@ -49,7 +49,7 @@ public class DriverFactory {
             capabilities.setBrowserName("chrome");
             capabilities.setVersion("77.0");
             capabilities.setCapability("enableVNC", true);
-            capabilities.setCapability("enableVideo", true);
+            capabilities.setCapability("enableVideo", false);
             RemoteWebDriver driver = new RemoteWebDriver(
                     URI.create("http://localhost:8081/wd/hub").toURL(),
                     capabilities
