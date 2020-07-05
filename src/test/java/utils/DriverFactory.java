@@ -1,5 +1,6 @@
 package utils;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -22,6 +23,7 @@ public class DriverFactory {
         System.setProperty("webdriver.ie.driver", System.getProperty("user.dir") + "\\drivers\\IEDriverServer.exe");
         System.setProperty("webdriver.edge.driver", System.getProperty("user.dir") + "\\drivers\\MicrosoftWebDriver.exe");
         if ("chrome".equalsIgnoreCase(browser)) {
+            WebDriverManager.chromedriver().setup();
             return new ChromeDriver();
         } else if ("firefox".equalsIgnoreCase(browser)) {
             return new FirefoxDriver();
@@ -44,7 +46,6 @@ public class DriverFactory {
             chromeOptions.addArguments("--no-sandbox");
             chromeOptions.merge(cap);
             WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), chromeOptions);
-
 
             //
             // For Selenoid

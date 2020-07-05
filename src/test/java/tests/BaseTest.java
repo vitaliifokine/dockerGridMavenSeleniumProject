@@ -15,7 +15,7 @@ public class BaseTest extends DriverFactory {
     @BeforeTest
     public void setUp() throws MalformedURLException {
         // Driver Factory Setup
-        wd = DriverFactory.setBrowser("remote");
+        wd = DriverFactory.setBrowser("chrome");
        // wd.manage().window().maximize();
     }
 
@@ -24,6 +24,7 @@ public class BaseTest extends DriverFactory {
     public void testCucumber() throws IOException {
         new BasePage(wd).openWebPage("https://cucumber.io/docs/guides/10-minute-tutorial/")
         .openWebPage("https://stackoverflow.com/");
+        System.out.println(wd.manage().getCookies());
     }
 
     @Feature("StackOverflow")
